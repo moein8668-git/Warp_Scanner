@@ -1,0 +1,19 @@
+name: Build EXE
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+      - name: Build Windows EXE
+        run: |
+          cd awg_verifier
+          GOOS=windows GOARCH=amd64 go build -o awg_verifier.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: awg-verifier-windows
+          path: awg_verifier/awg_verifier.exe
