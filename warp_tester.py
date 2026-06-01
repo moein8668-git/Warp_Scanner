@@ -938,12 +938,12 @@ class WarpTUI:
             while True:
                 try:
                     custom = IntPrompt.ask("[cyan]Enter number of endpoints[/cyan]", default="100")
-                    if 1 <= custom <= 10000:
+                    if 1 <= custom <= 1000000:
                         self.scan_mode = ScanMode.CUSTOM
                         self.custom_count = custom
                         break
                     else:
-                        console.print("[red]Please enter a number between 1 and 10000[/red]")
+                        console.print("[red]Please enter a number between 1 and 1000000[/red]")
                 except ValueError:
                     console.print("[red]Invalid input. Please enter a number.[/red]")
         
